@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
 import { useState } from 'react';
-import { View, Text } from 'react-native';
-import { Picker, PickerData } from 'react-native-animated-wheel-picker';
+import { View, Text, Button, Alert } from 'react-native';
+import Picker, { PickerData } from 'react-native-animated-wheel-picker';
 
 import styles from './App.style';
 
@@ -63,11 +63,12 @@ export const DATA2 = [
   { title: '2024', value: 3 },
 ];
 
+const itemHeight = 30;
+const visible = 5;
+
 export default function App() {
-  const [defaultPickerData, setDefaultPickerData] = useState<PickerData>();
   const [month, setMonth] = useState<PickerData>();
   const [year, setYear] = useState<PickerData>();
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Default</Text>
@@ -75,17 +76,32 @@ export default function App() {
         <Picker
           pickerData={DATA}
           textStyle={{ fontSize: 27 }}
-          onSelected={(value) => setDefaultPickerData(value)}
+          onSelected={(value) => setMonth(value)}
         />
       </View>
-      <Text>{JSON.stringify(defaultPickerData)}</Text>
-      <Text style={styles.title}>Custom highlight component</Text>
+      <Text style={styles.title}>Custom component</Text>
       <View style={styles.pickerContainer}>
         <View style={styles.centerHighlight} />
         <Picker
           pickerData={DATA}
           textStyle={{ fontSize: 27 }}
-          onSelected={(value) => console.log(value)}
+          maskComponents={
+            <>
+              <View
+                style={{
+                  height: itemHeight * Math.trunc(visible / 2),
+                  backgroundColor: 'yellow',
+                }}
+              />
+              <View style={{ height: itemHeight, backgroundColor: 'red' }} />
+              <View
+                style={{
+                  height: itemHeight * Math.trunc(visible / 2),
+                  backgroundColor: 'blue',
+                }}
+              />
+            </>
+          }
         />
       </View>
       <Text style={styles.title}>Multiple wheel picker</Text>
@@ -104,8 +120,15 @@ export default function App() {
           onSelected={(value) => setYear(value)}
         />
       </View>
-      <Text>{JSON.stringify(month)}</Text>
-      <Text>{JSON.stringify(year)}</Text>
+      <Button
+        title="show selected item"
+        onPress={() =>
+          Alert.alert(
+            'Item',
+            `${JSON.stringify(month)} \n ${JSON.stringify(year)}`
+          )
+        }
+      />
     </View>
   );
 }

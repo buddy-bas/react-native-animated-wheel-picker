@@ -1,5 +1,2 @@
-export {
-  default as Picker,
-  PickerData,
-  PickerProps,
-} from './components/Picker';
+export { default } from './components/Picker';
+export { PickerData, PickerProps } from './components/Picker';
