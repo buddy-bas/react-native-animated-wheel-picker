@@ -118,7 +118,11 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  * and the benefits of using Hermes will therefore be sharply reduced.
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
-
+buildscript {
+  ext {
+    kotlinVersion = "1.5.20"
+  }
+}
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
