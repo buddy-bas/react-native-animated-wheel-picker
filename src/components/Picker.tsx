@@ -37,7 +37,7 @@ export type PickerProps = ViewProps & {
   textStyle?: StyleProp<TextStyle>;
   maskComponents?: JSX.Element | JSX.Element[];
   contentContainerStyle?: StyleProp<ViewStyle>;
-  onSelected?: (data: PickerData) => void;
+  onSelected: (data: PickerData) => void;
 };
 const Picker = ({
   itemHeight = 30,
@@ -87,8 +87,7 @@ const PickerItem = ({
     easing: Easing.bezier(0.35, 1, 0.35, 1),
   };
 
-  const wrapper = (snapPointY: number) => {
-    const index = Math.abs(snapPointY / itemHeight);
+  const wrapper = (index: number) => {
     onSelected && onSelected(pickerData[index]);
   };
 
@@ -106,8 +105,11 @@ const PickerItem = ({
       },
       onEnd: ({ velocityY }) => {
         const snapPointY = snapPoint(translateY.value, velocityY, snapPoints);
-        translateY.value = withTiming(snapPointY, timingConfig);
-        runOnJS(wrapper)(snapPointY);
+        const index = Math.abs(snapPointY / itemHeight);
+        translateY.value = withTiming(snapPointY, timingConfig, () =>
+          runOnJS(wrapper)(index)
+        );
+
         // triggered at the end of the pan gesture
       },
     });

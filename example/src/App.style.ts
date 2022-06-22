@@ -17,9 +17,10 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   centerHighlight: {
-    backgroundColor: 'tomato',
+    backgroundColor: 'white',
     width: '80%',
     height: 30,
     position: 'absolute',
+    borderRadius: 10,
   },
 });
