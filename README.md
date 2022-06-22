@@ -1,4 +1,9 @@
 # react-native-animated-wheel-picker
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![IOS](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 
 A cross-platform wheel picker use Reanimated 2 implementation.
 
@@ -46,7 +51,7 @@ const WheelPicker = () => {
       <Picker
         pickerData={DATA}
         textStyle={{ fontSize: 27 }}
-        onSelected={(value) => setYear(value)}
+        onSelected={(item) => setYear(item)}
       />
     </View>
   );
@@ -59,13 +64,38 @@ const WheelPicker = () => {
 
 | Name                             | Type                 | Default                        | Description                                                                                                                                |
 | -------------------------------- | -------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `pickerData`                     | `array`              | **REQUIRED**                   | Modal show animation                                                                                                                       |
-| `itemHeight`                     | `number`             | `300`                          | Timing for the modal show animation (in ms)                                                                                               |
-| `visible`                        | `number`             | `5`                             | Modal hide animation                                                                                                                     |
-| `maskedComponents`                 | `JSX.Element` or `JSX.Element[]`       | `300`        | Timing for the modal hide animation (in ms)                                                                                               |
-| `contentContainerStyle`          | `StyleProp<ViewStyle>`| `undefined`                        | Move the modal up if the keyboard is open  
-| `textStyle`                      | `StyleProp<TextStyle>`                | `undefined`                        | Move the modal up if the keyboard is open           |
-| `onSelected`                     | `function`           |**REQUIRED**                             | Will use RN `Modal` component to cover the entire screen                                                               |
+| `pickerData`                     | `{"title":string,"value":any}`              | **REQUIRED**                   | Data for each element "title" key display on picker item                                                                                                                    |
+| `itemHeight`                     | `number`             | `30`                          | Height of each picker item                                                                                               |
+| `visible`                        | `number`             | `5`                             | Visible item on picker                                                                                                                     |
+| `maskedComponents`                 | `JSX.Element` or `JSX.Element[]`       | `MaskedComponent`       | The component masked picker view                                                                                              |
+| `contentContainerStyle`          | `StyleProp<ViewStyle>`| `undefined`                        | Item view style  
+| `textStyle`                      | `StyleProp<TextStyle>`                |      `undefined`                  | Item text style         |
+| `onSelected`                     | `({"title":string,"value":any}) => void`           |**REQUIRED**                             |  Callback when user select item that will return element of pickerData array
+
+### `MaskedComponent`
+
+```js
+<View>
+  <View
+    style={{
+      height: itemHeight * Math.trunc(visible / 2),
+      backgroundColor: 'grey',
+    }}
+  />
+
+  <View style={{ height: itemHeight, backgroundColor: 'white' }} />
+  <View
+    style={{
+      height: itemHeight * Math.trunc(visible / 2),
+      backgroundColor: 'grey',
+    }}
+  />
+</View>;
+
+```
+## Credit
+
+- Animation tutor https://www.youtube.com/watch?v=PVSjPswRn0U
 
 ## Contributing
 
