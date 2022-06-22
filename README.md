@@ -60,10 +60,10 @@ const WheelPicker = () => {
 | Name                             | Type                 | Default                        | Description                                                                                                                                |
 | -------------------------------- | -------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | `pickerData`                     | `array`              | **REQUIRED**                   | Modal show animation                                                                                                                       |
-| `itemHeight`                     | `number`             | `300`                          | Timing for the modal show animation (in ms)                                                                                                |
-| `visible`                        | `number`             | `5`                             | Modal hide animation                                                                                                                       |
-| `maskComponents`                 | `JSX.Element` or `JSX.Element[]`       | `300`        | Timing for the modal hide animation (in ms)                                                                                                |
-| `contentContainerStyle`          | `StyleProp<ViewStyle>`                | `undefined`                        | Move the modal up if the keyboard is open  
+| `itemHeight`                     | `number`             | `300`                          | Timing for the modal show animation (in ms)                                                                                               |
+| `visible`                        | `number`             | `5`                             | Modal hide animation                                                                                                                     |
+| `maskedComponents`                 | `JSX.Element` or `JSX.Element[]`       | `300`        | Timing for the modal hide animation (in ms)                                                                                               |
+| `contentContainerStyle`          | `StyleProp<ViewStyle>`| `undefined`                        | Move the modal up if the keyboard is open  
 | `textStyle`                      | `StyleProp<TextStyle>`                | `undefined`                        | Move the modal up if the keyboard is open           |
 | `onSelected`                     | `function`           |**REQUIRED**                             | Will use RN `Modal` component to cover the entire screen                                                               |
 
