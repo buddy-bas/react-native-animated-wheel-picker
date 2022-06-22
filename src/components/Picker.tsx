@@ -35,7 +35,7 @@ export type PickerProps = ViewProps & {
   pickerData: PickerData[];
   visible?: number;
   textStyle?: StyleProp<TextStyle>;
-  maskComponents?: JSX.Element | JSX.Element[];
+  maskedComponents?: JSX.Element | JSX.Element[];
   contentContainerStyle?: StyleProp<ViewStyle>;
   onSelected: (data: PickerData) => void;
 };
@@ -44,7 +44,7 @@ const Picker = ({
   pickerData,
   visible = 5,
   textStyle,
-  maskComponents,
+  maskedComponents,
   contentContainerStyle,
   onSelected,
   ...props
@@ -56,7 +56,7 @@ const Picker = ({
         pickerData={pickerData}
         visible={visible}
         textStyle={textStyle ?? {}}
-        maskComponents={maskComponents}
+        maskedComponents={maskedComponents}
         contentContainerStyle={contentContainerStyle}
         onSelected={onSelected}
       />
@@ -67,13 +67,16 @@ const Picker = ({
 type PickerItemProps = Required<
   Pick<PickerProps, 'itemHeight' | 'pickerData' | 'visible' | 'textStyle'>
 > &
-  Pick<PickerProps, 'maskComponents' | 'onSelected' | 'contentContainerStyle'>;
+  Pick<
+    PickerProps,
+    'maskedComponents' | 'onSelected' | 'contentContainerStyle'
+  >;
 const PickerItem = ({
   itemHeight,
   pickerData,
   visible,
   textStyle,
-  maskComponents,
+  maskedComponents,
   contentContainerStyle,
   onSelected,
 }: PickerItemProps) => {
@@ -148,8 +151,8 @@ const PickerItem = ({
           </View>
         }
       >
-        {maskComponents ? (
-          maskComponents
+        {maskedComponents ? (
+          maskedComponents
         ) : (
           <>
             <View
