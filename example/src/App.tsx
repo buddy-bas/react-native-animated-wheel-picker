@@ -85,7 +85,10 @@ export default function App() {
         <Picker
           pickerData={DATA}
           textStyle={{ fontSize: 27 }}
-          maskComponents={
+          onSelected={(item) => {
+            console.log(item);
+          }}
+          maskedComponents={
             <>
               <View
                 style={{
