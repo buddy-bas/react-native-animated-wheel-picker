@@ -2,6 +2,15 @@
 
 A cross-platform wheel picker use Reanimated 2 implementation.
 
+## Preview
+<div
+align="center"
+style="width:100%;">
+<img src="https://media.giphy.com/media/FLqrtxwHe3DAAL9Y2Q/giphy.gif"/>
+<img src="https://media.giphy.com/media/lQkerbbjkO6OpDVXWz/giphy.gif"/>
+</div>
+
+
 ## Features
 - Smooth scroll animations
 - Custom text style, view style, mask component style
