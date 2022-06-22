@@ -37,7 +37,7 @@ export type PickerProps = ViewProps & {
   textStyle?: StyleProp<TextStyle>;
   maskComponents?: JSX.Element | JSX.Element[];
   contentContainerStyle?: StyleProp<ViewStyle>;
-  onSelected?: (data: PickerData) => void;
+  onSelected: (data: PickerData) => void;
 };
 const Picker = ({
   itemHeight = 30,
