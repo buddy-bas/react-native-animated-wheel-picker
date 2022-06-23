@@ -34,7 +34,10 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "wheel-picker",
+    "picker",
+    "reanimated"
   ],
   "repository": "https://github.com/buddy-bas/react-native-animated-wheel-picker",
   "author": "Bundit <b.thakummee.96@gmail.com> (https://github.com/buddy-bas)",
