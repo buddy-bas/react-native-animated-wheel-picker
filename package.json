@@ -1,6 +1,6 @@
 {
   "name": "react-native-animated-wheel-picker",
-  "version": "0.1.2",
+  "version": "0.1.1",
   "description": "A cross-platform wheel picker use Reanimted 2 implementation.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -70,7 +70,10 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-gesture-handler": "2.*.*",
+    "react-native-reanimated": "2.*.*",
+    "@react-native-masked-view/masked-view":"*"
   },
   "jest": {
     "preset": "react-native",
@@ -146,9 +149,6 @@
     ]
   },
   "dependencies": {
-    "@react-native-masked-view/masked-view": "^0.2.6",
-    "react-native-gesture-handler": "^2.4.2",
-    "react-native-reanimated": "^2.8.0",
     "react-native-redash": "^16.3.0"
   },
   "resolutions": {
