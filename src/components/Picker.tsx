@@ -5,6 +5,7 @@ import {
   StyleProp,
   TextStyle,
   ViewStyle,
+  Platform,
 } from 'react-native';
 import React from 'react';
 import Animated, {
@@ -77,6 +78,8 @@ type PickerItemProps = Required<
     PickerProps,
     'maskedComponents' | 'onSelected' | 'contentContainerStyle'
   >;
+
+const duration = 1000;
 const PickerItem = ({
   itemHeight,
   pickerData,
@@ -93,12 +96,19 @@ const PickerItem = ({
     .map((_, i) => i * -itemHeight);
 
   const timingConfig = {
-    duration: 1000,
+    duration: duration,
     easing: Easing.bezier(0.35, 1, 0.35, 1),
   };
 
   const wrapper = (index: number) => {
-    onSelected && onSelected(pickerData[index], index);
+    if (Platform.OS === 'android') {
+      onSelected &&
+        setTimeout(() => {
+          onSelected(pickerData[index], index);
+        }, 600);
+    } else {
+      onSelected && onSelected(pickerData[index], index);
+    }
   };
 
   const onGestureEvent =
@@ -116,10 +126,8 @@ const PickerItem = ({
       onEnd: ({ velocityY }) => {
         const snapPointY = snapPoint(translateY.value, velocityY, snapPoints);
         const index = Math.abs(snapPointY / itemHeight);
-        translateY.value = withTiming(snapPointY, timingConfig, () =>
-          runOnJS(wrapper)(index)
-        );
-
+        translateY.value = withTiming(snapPointY, timingConfig);
+        runOnJS(wrapper)(index);
         // triggered at the end of the pan gesture
       },
     });
