@@ -66,11 +66,12 @@ const WheelPicker = () => {
 | -------------------------------- | -------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | `pickerData`                     | `{"title":string,"value":any}`              | **REQUIRED**                   | Data for each element "title" key display on picker item                                                                                                                    |
 | `itemHeight`                     | `number`             | `30`                          | Height of each picker item                                                                                               |
-| `visible`                        | `number`             | `5`                             | Visible item on picker                                                                                                                     |
+| `visible`                        | `number`             | `5`                             | Visible item on picker     
+| `initialIndex`                        | `number`             | `0`                             | Set initial selected item |
 | `maskedComponents`                 | `JSX.Element` or `JSX.Element[]`       | `MaskedComponent`       | The component masked picker view                                                                                              |
 | `contentContainerStyle`          | `StyleProp<ViewStyle>`| `undefined`                        | Item view style  
 | `textStyle`                      | `StyleProp<TextStyle>`                |      `undefined`                  | Item text style         |
-| `onSelected`                     | `({"title":string,"value":any}) => void`           |**REQUIRED**                             |  Callback when user select item that will return element of pickerData array
+| `onSelected`                     | `({"title":string,"value":any},index:number) => void`           |**REQUIRED**                             |  Callback when user select item that will return element of pickerData array
 
 ### `MaskedComponent`
 
