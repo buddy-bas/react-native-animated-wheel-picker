@@ -47,7 +47,7 @@ const DATA = [
 const WheelPicker = () => {
   const [year, setYear] = useState();
   return (
-    <View>
+    <View style={{height:200}}>
       <Picker
         pickerData={DATA}
         textStyle={{ fontSize: 27 }}
