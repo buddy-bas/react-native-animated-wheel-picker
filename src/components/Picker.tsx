@@ -38,7 +38,7 @@ export type PickerProps = ViewProps & {
   textStyle?: StyleProp<TextStyle>;
   maskedComponents?: JSX.Element | JSX.Element[];
   contentContainerStyle?: StyleProp<ViewStyle>;
-  onSelected: (data: PickerData) => void;
+  onSelected: (data: PickerData, index: number) => void;
 };
 const Picker = ({
   itemHeight = 30,
@@ -98,7 +98,7 @@ const PickerItem = ({
   };
 
   const wrapper = (index: number) => {
-    onSelected && onSelected(pickerData[index]);
+    onSelected && onSelected(pickerData[index], index);
   };
 
   const onGestureEvent =
