@@ -76,6 +76,7 @@ export default function App() {
         <Picker
           pickerData={DATA}
           textStyle={{ fontSize: 27 }}
+          initialIndex={3}
           onSelected={(value) => setMonth(value)}
         />
       </View>

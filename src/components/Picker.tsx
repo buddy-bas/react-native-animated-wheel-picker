@@ -33,6 +33,7 @@ export type PickerData = {
 export type PickerProps = ViewProps & {
   itemHeight?: number;
   pickerData: PickerData[];
+  initialIndex?: number;
   visible?: number;
   textStyle?: StyleProp<TextStyle>;
   maskedComponents?: JSX.Element | JSX.Element[];
@@ -46,6 +47,7 @@ const Picker = ({
   textStyle,
   maskedComponents,
   contentContainerStyle,
+  initialIndex = 0,
   onSelected,
   ...props
 }: PickerProps) => {
@@ -58,6 +60,7 @@ const Picker = ({
         textStyle={textStyle ?? {}}
         maskedComponents={maskedComponents}
         contentContainerStyle={contentContainerStyle}
+        initialIndex={initialIndex}
         onSelected={onSelected}
       />
     </View>
@@ -65,7 +68,10 @@ const Picker = ({
 };
 
 type PickerItemProps = Required<
-  Pick<PickerProps, 'itemHeight' | 'pickerData' | 'visible' | 'textStyle'>
+  Pick<
+    PickerProps,
+    'itemHeight' | 'pickerData' | 'visible' | 'textStyle' | 'initialIndex'
+  >
 > &
   Pick<
     PickerProps,
@@ -78,9 +84,10 @@ const PickerItem = ({
   textStyle,
   maskedComponents,
   contentContainerStyle,
+  initialIndex,
   onSelected,
 }: PickerItemProps) => {
-  const translateY = useSharedValue(0);
+  const translateY = useSharedValue(-itemHeight * initialIndex);
   const snapPoints = new Array(pickerData.length)
     .fill(0)
     .map((_, i) => i * -itemHeight);
