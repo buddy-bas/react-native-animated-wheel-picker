@@ -5,7 +5,6 @@ import {
   StyleProp,
   TextStyle,
   ViewStyle,
-  Platform,
 } from 'react-native';
 import React from 'react';
 import Animated, {
@@ -101,14 +100,7 @@ const PickerItem = ({
   };
 
   const wrapper = (index: number) => {
-    if (Platform.OS === 'android') {
-      onSelected &&
-        setTimeout(() => {
-          onSelected(pickerData[index], index);
-        }, 600);
-    } else {
-      onSelected && onSelected(pickerData[index], index);
-    }
+    onSelected && onSelected(pickerData[index], index);
   };
 
   const onGestureEvent =
