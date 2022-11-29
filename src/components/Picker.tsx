@@ -122,6 +122,12 @@ const PickerItem = ({
         runOnJS(wrapper)(index);
         // triggered at the end of the pan gesture
       },
+      onFinish({velocityY}, ctx, isCanceledOrFailed) {
+        if(isCanceledOrFailed){
+          const snapPointY = snapPoint(translateY.value, velocityY, snapPoints);
+          translateY.value = withTiming(snapPointY, timingConfig);
+      }
+      // triggred when gesture is outside of the pan gesture  
     });
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: translateY.value }],
