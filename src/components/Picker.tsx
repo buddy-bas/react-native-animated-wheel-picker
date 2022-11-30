@@ -105,16 +105,17 @@ const PickerItem = ({
 
   const onGestureEvent =
     useAnimatedGestureHandler<PanGestureHandlerGestureEvent>({
+      // @ts-ignore
       onStart: (_event, ctx) => {
-        // @ts-ignore
         ctx.y = translateY.value;
         // triggered at the start of the pan gesture
       },
+      // @ts-ignore
       onActive: ({ translationY }, ctx) => {
-        // @ts-ignore
         translateY.value = translationY + ctx.y;
         // triggered on every frame of the pan gesture
       },
+      // @ts-ignore
       onEnd: ({ velocityY }) => {
         const snapPointY = snapPoint(translateY.value, velocityY, snapPoints);
         const index =Math.abs(Math.round(snapPointY / itemHeight));
@@ -122,8 +123,8 @@ const PickerItem = ({
         runOnJS(wrapper)(index);
         // triggered at the end of the pan gesture
       },
+      // @ts-ignore
       onFinish({velocityY}, isCanceledOrFailed) {
-        // @ts-ignore
         if(isCanceledOrFailed){
           const snapPointY = snapPoint(translateY.value, velocityY, snapPoints);
           const index = Math.abs(Math.round(snapPointY / itemHeight));
