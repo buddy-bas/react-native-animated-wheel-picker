@@ -107,11 +107,13 @@ const PickerItem = ({
     useAnimatedGestureHandler<PanGestureHandlerGestureEvent>({
       // @ts-ignore
       onStart: (_event, ctx) => {
+        // @ts-ignore
         ctx.y = translateY.value;
         // triggered at the start of the pan gesture
       },
       // @ts-ignore
       onActive: ({ translationY }, ctx) => {
+         // @ts-ignore
         translateY.value = translationY + ctx.y;
         // triggered on every frame of the pan gesture
       },
