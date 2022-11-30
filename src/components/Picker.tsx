@@ -122,7 +122,8 @@ const PickerItem = ({
         runOnJS(wrapper)(index);
         // triggered at the end of the pan gesture
       },
-      onFinish({velocityY}, ctx, isCanceledOrFailed) {
+      onFinish({velocityY}, isCanceledOrFailed) {
+        // @ts-ignore
         if(isCanceledOrFailed){
           const snapPointY = snapPoint(translateY.value, velocityY, snapPoints);
           const index = Math.abs(Math.round(snapPointY / itemHeight));
