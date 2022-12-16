@@ -38,6 +38,7 @@ export type PickerProps = ViewProps & {
   textStyle?: StyleProp<TextStyle>;
   maskedComponents?: JSX.Element | JSX.Element[];
   contentContainerStyle?: StyleProp<ViewStyle>;
+  selectedViewColor?: StyleProp<ViewStyle>;
   onSelected: (data: PickerData, index: number) => void;
 };
 const Picker = ({
@@ -48,6 +49,7 @@ const Picker = ({
   maskedComponents,
   contentContainerStyle,
   initialIndex = 0,
+  selectedViewColor = 'white',
   onSelected,
   ...props
 }: PickerProps) => {
@@ -62,6 +64,7 @@ const Picker = ({
         contentContainerStyle={contentContainerStyle}
         initialIndex={initialIndex}
         onSelected={onSelected}
+        selectedViewColor={selectedViewColor}
       />
     </View>
   );
@@ -75,7 +78,7 @@ type PickerItemProps = Required<
 > &
   Pick<
     PickerProps,
-    'maskedComponents' | 'onSelected' | 'contentContainerStyle'
+    'maskedComponents' | 'onSelected' | 'contentContainerStyle' | 'selectedViewColor'
   >;
 
 const duration = 1000;
@@ -87,6 +90,7 @@ const PickerItem = ({
   maskedComponents,
   contentContainerStyle,
   initialIndex,
+  selectedViewColor = 'white',
   onSelected,
 }: PickerItemProps) => {
   const translateY = useSharedValue(-itemHeight * initialIndex);
@@ -172,7 +176,7 @@ const PickerItem = ({
 
             <View
               // eslint-disable-next-line react-native/no-inline-styles
-              style={{ height: itemHeight, backgroundColor: 'white' }}
+              style={{ height: itemHeight, backgroundColor: selectedViewColor }}
             />
             <View
               // eslint-disable-next-line react-native/no-inline-styles
